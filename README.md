@@ -1,6 +1,10 @@
 # 🎓 Student Marks Analysis & Prediction Dashboard
 
-A Machine Learning-powered web application that analyses student academic performance and predicts final exam marks using Linear Regression. Built with Python and Streamlit, the dashboard provides interactive visualisations, individual student lookups, and model transparency — all wrapped in a sleek dark-themed UI.
+A basic Machine Learning-powered web application that analyses student academic performance and predicts final exam marks using Linear Regression. Built with Python and Streamlit, the dashboard provides interactive visualisations, individual student lookups, and model transparency — all wrapped in a sleek dark-themed UI.
+
+---
+
+https://github.com/user-attachments/assets/c1834178-dadf-4c71-9186-a3ab3f42bd9e
 
 ---
 
@@ -67,33 +71,9 @@ Same columns as above, **without** the `finals` column.
 **Why Linear Regression?**
 The relationship between internal assessments and final performance is expected to be roughly linear — students who score higher in CIA and Mid-Sem consistently tend to perform better in finals. Linear Regression is interpretable, fast, and effective for this kind of academic prediction.
 
-**Feature Engineering:**
-All features are normalised to a 0–100 scale before training to prevent higher-range features (like Mid-Sem out of 50) from dominating lower-range ones (like CIA-1 out of 20).
-
-```python
-cia1_sc = (CIA-1 / 20) × 100
-mid_sc  = (Mid-sem / 50) × 100
-cia3_sc = (CIA-3 / 20) × 100
-att_sc  = Attendance (already in %)
-```
-
-**Train-Test Split:** 80% training / 20% testing (`random_state=42`)
-
 **Evaluation Metrics:**
 - **MAE** (Mean Absolute Error) — average mark difference between predicted and actual
 - **R² Score** — how well the model explains variance in final marks (closer to 1.0 is better)
-
----
-
-## 📈 Visualisations
-
-- **Class Average Bar Chart** — Average vs max marks per exam
-- **Score Distribution Histograms** — Mark spread across CIA-1, Mid-Sem, CIA-3
-- **Attendance Donut Chart** — Students categorised by attendance bracket (<60%, 60–75%, 75–90%, >90%)
-- **Attendance vs Predicted Finals Scatter** — Trend line showing correlation
-- **Student vs Class Average** — Individual comparison bar chart
-- **Predicted Grade Distribution** — Count of O, A+, A, B+, B, C, F grades
-- **Actual vs Predicted Scatter** — Model accuracy visualisation
 
 ---
 
@@ -138,30 +118,7 @@ Use the **sidebar** to upload:
 
 ---
 
-## 🎓 Grading Scale
-
-| Grade | Marks Range |
-|---|---|
-| O | ≥ 90 |
-| A+ | 80 – 89 |
-| A | 70 – 79 |
-| B+ | 60 – 69 |
-| B | 50 – 59 |
-| C | 40 – 49 |
-| F | < 40 |
-
-Students with predicted finals ≥ 40 are marked **Pass ✅**, otherwise **Fail ❌**.
-
----
-
-## 📌 Notes
-
-- Attendance values are accepted as both `78.40%` (string) and `78.40` (float).
-- Predicted marks are clipped between 0 and 100 to ensure realistic outputs.
-- The model is cached using `@st.cache_resource` so it only retrains when the training file changes.
-
----
-
 ## 👨‍💻 Author
+
 
 Built as an academic ML project demonstrating student performance analysis and prediction using supervised learning.
